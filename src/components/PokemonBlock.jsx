@@ -8,30 +8,28 @@ import axios from "axios"
 function PokemonBlock({ name, url }) {
  var pockemonNamber= url.toString().split('/')[6];
  var url = "https://pokeres.bastionbot.org/images/pokemon/"+pockemonNamber+".png"
- const sortRef = React.useRef(null);
+ 
  const dispatch = useDispatch();
  
- const handeleClick = (e) => {
- 
-  if (!e.path.includes(sortRef.current)) {
+ const handleClick = (e) => {
+  console.log("3")
+  
     
       axios.get(`https://pokeapi.co/api/v2/pokemon/${pockemonNamber}/`).then(({ data }) => {
-        console.log(data)
+        
        
-
+    console.log(data)
         //setPizzas(data.pizzas)
       })
-  }
+  
 };
- React.useEffect(() => {
-  document.body.addEventListener('click', handeleClick);
-}, []);
+ 
   
  
 
  
   return (
-    <Link to={`/cart/${pockemonNamber}`} ref={sortRef} >
+    <Link to={`/cart/${pockemonNamber}`} onClick={handleClick} >
     <div className="pizza-block">
       <img className="pizza-block__image" src={url} alt="Pizza" />
       <h4 className="pizza-block__title">{name}</h4>
