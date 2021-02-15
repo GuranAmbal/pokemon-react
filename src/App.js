@@ -15,7 +15,7 @@ function App() {
 
       dispatch(setPokemon(data))
 
-      //setPizzas(data.pizzas)
+
     })
 
   }, [])
